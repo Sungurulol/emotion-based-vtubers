@@ -1,0 +1,17 @@
+data/
+models/
+.venv/
+__pycache__/
+.DS_Store
+
+# LaTeX ara dosyaları
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.synctex.gz
+
+# Derlenmiş rapor PDF'leri (kaynaktan üretilir)
+report/**/progress.pdf
+report/**/final.pdf

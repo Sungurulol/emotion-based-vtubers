@@ -1,0 +1,92 @@
+% Progress Report (D2, Hafta 7). 4-5 sayfa.
+% Derleme (bu klasörden): latexmk -pdf progress.tex
+% Şekil ve tablolar ../../results/ altından okunuyor; src/eda.py ile yeniden üretilir.
+
+\documentclass[10pt,a4paper,twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[hmargin=1.6cm,top=1.4cm,bottom=1.6cm]{geometry}
+\linespread{0.96}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{url}
+\urlstyle{same}
+\usepackage{graphicx}
+\graphicspath{{../../results/figures/}}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{atanavy}{HTML}{2A2660}
+\usepackage[superscript]{cite}
+\makeatletter
+\renewcommand{\@citess}[1]{\textsuperscript{[#1]}}
+\makeatother
+\usepackage[hidelinks]{hyperref}
+\usepackage[font=small,labelfont=bf,skip=4pt]{caption}
+
+\titleformat{\section}{\normalsize\bfseries\color{atanavy}}{\thesection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.0ex plus 0.3ex}{0.5ex}
+\titleformat{\paragraph}[runin]{\normalsize\bfseries}{}{0pt}{}[.]
+\titlespacing*{\paragraph}{0pt}{0.6ex plus 0.2ex}{0.5em}
+\setlength{\parskip}{0.3ex}
+
+% Henüz yazılmamış yerler için gri not. Teslimden önce hepsi silinecek.
+\newcommand{\todo}[1]{\textcolor{gray}{\textit{[TODO: #1]}}}
+
+\title{\vspace{-1.6cm}\includegraphics[height=1.3cm]{atauni-logo.png}\\[0.6em]\Large\textbf{Emotion-Driven VTuber Avatars: Progress Report}}
+\author{Ömer Sunguralp Bektaş \\
+\small Artificial Intelligence and Data Engineering, Atatürk University, Erzurum, Türkiye \\
+\small \href{mailto:omersunguralp.bektas24@ogr.atauni.edu.tr}{omersunguralp.bektas24@ogr.atauni.edu.tr} \enspace$\cdot$\enspace ORCID: \href{https://orcid.org/0009-0000-8254-4949}{0009-0000-8254-4949}}
+\date{}
+
+\begin{document}
+\maketitle
+
+% 0. Kısa giriş + özet (Hafta 7, en son yazılır)
+\section{Introduction}
+\todo{Short summary of the project and of what this report covers. Written last, in week 7.}
+
+% 1. Dataset analysis (Hafta 4 metin, Hafta 5 görseller)
+\input{sections/dataset}
+
+% 2. Preprocessing (Hafta 5)
+\section{Preprocessing}
+\todo{Frame sampling, face detection, cropping, resizing, normalisation, augmentation; what and why for each step. Pipeline diagram.}
+
+% 3. Baseline results (Hafta 6)
+\section{Baseline Results}
+\todo{Simple CNN: frame- and clip-level macro-F1 and accuracy on the validation actors, confusion matrix, loss curves, overfitting discussion.}
+
+% 4. Initial DL model (Hafta 6)
+\section{Initial Deep Learning Model}
+\todo{Frame-based ResNet-18: architecture, replaced output layer, pretrained weights, training settings.}
+
+% 5. Initial results (Hafta 7)
+\section{Initial Results}
+\todo{Comparison table: baseline vs.\ ResNet-18, short interpretation.}
+
+% 6. Problems encountered (Hafta 7, notlar.md'den)
+\section{Problems Encountered}
+\todo{Group the entries of the problem log under 3--5 headings, with how each was or will be solved.}
+
+% 7. Revised methodology + plan (Hafta 7)
+\section{Revised Methodology and Remaining Plan}
+\todo{What changed since the proposal and why; plan for the remaining weeks.}
+
+{\small
+\begin{thebibliography}{9}
+\setlength{\itemsep}{0pt}
+
+\bibitem{ravdess}
+S.~R. Livingstone and F.~A. Russo, ``The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS): A dynamic, multimodal set of facial and vocal expressions in North American English,'' \emph{PLoS ONE}, vol.~13, no.~5, e0196391, 2018.
+
+\bibitem{ravdesszenodo}
+S.~R. Livingstone and F.~A. Russo, ``The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS),'' Zenodo, 2018. \url{https://doi.org/10.5281/zenodo.1188976}
+
+\end{thebibliography}
+}
+
+\end{document}

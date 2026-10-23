@@ -1,0 +1,9 @@
+# Python 3.13.13, macOS (Apple M5, MPS)
+torch==2.14.1
+torchvision==0.29.1
+numpy==2.5.4
+pandas==3.0.6
+matplotlib==3.11.2
+scikit-learn==1.9.1
+opencv-python==5.0.0.93
+# Sistem bağımlılığı (pip değil): ffmpeg / ffprobe — src/eda.py video metadata için kullanıyor
