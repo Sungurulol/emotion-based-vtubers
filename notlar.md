@@ -12,7 +12,7 @@ Her satır: tarih, sorun, çözüm.
 | 2026-10-17 | `.venv`'e kurulan PyTorch 2.14.1, sistemdeki sürüm 2.12.1. | Proje `.venv` içindeki 2.14.1'i kullanıyor. README ve `requirements.txt`'e bu sürüm yazılacak. |
 | 2026-10-18 | Her zip'te aynı `Actor_XX/` klasöründe hem `01-*` (ses+görüntü) hem `02-*` (sadece görüntü) var. İkisi aynı görüntü, birlikte alınırsa her klip iki kez sayılır. | Zip'lerden sadece `02-*` çıkarıldı. Sonuç: 1440 klip, her aktörde 60. |
 | 2026-10-18 | Proposal'da "30 fps" yazıyor, ffprobe ile ölçülen değer bütün kliplerde 29.97 fps (30000/1001, NTSC). | Raporlarda 29.97 yazılacak. Kare örneklemede fark etmez, çünkü eşit aralıkla kare indeksi seçiliyor, zaman damgası kullanılmıyor. |
-| 2026-10-23 | Üst klasörün adı `- Proje` → `Derin Ogrenme - Proje` olunca `.venv` bozuldu: `activate` ve `pip` eski yolu gösteriyor. `source .venv/bin/activate` sonrası `python` sessizce sistem Python'una (torch 2.12.1) düşüyor. | `.venv` silinip `requirements.txt` ile yeniden kurulacak. Bundan sonra klasör adları değişmeyecek; değişirse `.venv` yeniden kurulur. |
+| 2026-10-23 | Üst klasörün adı `- Proje` → `Derin Ogrenme - Proje` olunca `.venv` bozuldu: `activate` ve `pip` eski yolu gösteriyor. `source .venv/bin/activate` sonrası `python` sessizce sistem Python'una (torch 2.12.1) düşüyor. | `.venv` silinip `requirements.txt` ile yeniden kuruldu. `build_index.py` ve `splits.py` yeni ortamda birebir aynı çıktıyı verdi. Bundan sonra klasör adı değişirse `.venv` yeniden kurulur. |
 | 2026-10-18 | Disk: zip'ler 12 GB, çıkarılmış `02-*` klipleri 6,3 GB. Zip'lerin yarısı (01-*) hiç kullanılmayacak. | Şimdilik zip'ler duruyor. Çıkarma doğrulandıktan sonra silinebilir, gerekirse Zenodo'dan tekrar indirilir (MD5'ler belli). |
 
 ## Kararlar
