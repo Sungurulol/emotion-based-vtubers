@@ -1,8 +1,8 @@
 """Veri seti analizi: video metadata, özet tablo, sınıf dağılımı grafiği.
 
 Çıktılar:
-    results/video_meta.csv               her klip için çözünürlük, fps, kare sayısı, süre
-    results/dataset_summary.md / .tex    veri seti özet tablosu
+    data/metadata/video_meta.csv               her klip için çözünürlük, fps, kare sayısı, süre
+    results/tables/dataset_summary.md / .tex   veri seti özet tablosu
     results/figures/class_distribution.pdf / .png
 
 Çalıştırma (proje kökünden, önce build_index.py ve splits.py):
@@ -13,7 +13,6 @@ import json
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
 from fractions import Fraction
-from pathlib import Path
 
 import matplotlib
 
@@ -22,13 +21,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from build_index import CLASSES
-
-ROOT = Path(__file__).resolve().parents[1]
-RESULTS = ROOT / "results"
-FIG_DIR = RESULTS / "figures"
-INDEX_PATH = RESULTS / "index.csv"
-SPLITS_PATH = RESULTS / "splits.json"
-META_PATH = RESULTS / "video_meta.csv"
+from config import FIG_DIR, INDEX_PATH, META_PATH, ROOT, SPLITS_PATH, TABLE_DIR
 
 # Grafik renkleri (dataviz referans paleti, slot 1 ve 2; renk körlüğü kontrolünden geçti).
 COLOR_ORIGINAL = "#2a78d6"
@@ -109,7 +102,8 @@ def summary_rows(df: pd.DataFrame, meta: pd.DataFrame) -> list[tuple[str, str]]:
 
 def write_summary(rows: list[tuple[str, str]]) -> None:
     md = ["| Property | Value |", "|---|---|"] + [f"| {k} | {v} |" for k, v in rows]
-    (RESULTS / "dataset_summary.md").write_text("\n".join(md) + "\n")
+    TABLE_DIR.mkdir(parents=True, exist_ok=True)
+    (TABLE_DIR / "dataset_summary.md").write_text("\n".join(md) + "\n")
 
     def tex(s: str) -> str:
         return s.replace("×", r"$\times$").replace("–", "--")
@@ -129,7 +123,7 @@ def write_summary(rows: list[tuple[str, str]]) -> None:
         r"\end{tabular}",
         r"\end{table}",
     ]
-    (RESULTS / "dataset_summary.tex").write_text("\n".join(lines) + "\n")
+    (TABLE_DIR / "dataset_summary.tex").write_text("\n".join(lines) + "\n")
 
 
 # ---------------------------------------------------------------- grafik
@@ -172,8 +166,9 @@ def plot_class_distribution(df: pd.DataFrame) -> None:
 
     fig.tight_layout()
     FIG_DIR.mkdir(parents=True, exist_ok=True)
-    for ext in ("pdf", "png"):
-        fig.savefig(FIG_DIR / f"class_distribution.{ext}", dpi=300)
+    # PDF'e oluşturma tarihi yazılmasın: aynı veri her çalıştırmada birebir aynı dosyayı üretsin.
+    fig.savefig(FIG_DIR / "class_distribution.pdf", metadata={"CreationDate": None})
+    fig.savefig(FIG_DIR / "class_distribution.png", dpi=300)
     plt.close(fig)
 
 
@@ -186,7 +181,7 @@ def main() -> None:
     plot_class_distribution(df)
 
     print(f"{META_PATH.relative_to(ROOT)}")
-    print("results/dataset_summary.md, results/dataset_summary.tex")
+    print("results/tables/dataset_summary.md, .tex")
     print("results/figures/class_distribution.pdf, .png\n")
     for k, v in rows:
         print(f"{k:28s} {v}")

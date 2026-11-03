@@ -1,5 +1,5 @@
 % 1. Dataset analysis
-% Kaynak: notlar.md (Kararlar, Veri seti gözlemleri). Sayılar results/ altındaki dosyalardan.
+% Kaynak: docs/notlar.md (Kararlar, Veri seti gözlemleri). Sayılar results/ ve data/metadata/ altındaki dosyalardan.
 % Bütçe: ~1 sayfa (Hafta 5'te eklenecek görsellerle birlikte).
 
 \section{Dataset Analysis}\label{sec:dataset}
@@ -10,7 +10,7 @@ I use the RAVDESS dataset~\cite{ravdess}, downloaded from its official Zenodo re
 \paragraph{Selected subset}
 Every RAVDESS recording exists in three versions: audio-visual (modality~01), video-only (02) and audio-only (03). In this project the only input of the system is the camera image; no microphone is used. The tone of voice in which a person says a sentence therefore has no value for the system, and the emotion has to be recognised from the face alone. For this reason I kept only the video-only files. The audio-visual files contain exactly the same frames, so using them as well would count every clip twice. I also left out the song part of the dataset, because it covers only six of the eight emotions (surprise and disgust are missing) and has no recordings for one of the actors. The resulting subset has 1,440 clips, 60 per actor (Table~\ref{tab:dataset}). Each file name encodes the modality, emotion, intensity, sentence, repetition and actor, so I built the index of the dataset directly from the file names and checked all expected counts automatically.
 
-\input{../../results/dataset_summary.tex}
+\input{../../results/tables/dataset_summary.tex}
 
 All clips are H.264 videos with a resolution of $1280\times720$. Their measured frame rate is 29.97~fps (in the proposal I gave the nominal value of 30~fps). The clips are short, between 2.94 and 5.27~s (88--158 frames, median 110), so even the shortest clip has enough frames for the frame counts $T \in \{8, 16, 32\}$ that I plan to test.
 

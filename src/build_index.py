@@ -1,4 +1,4 @@
-"""RAVDESS dosya adlarından klip indeksi çıkarır ve results/index.csv olarak kaydeder.
+"""RAVDESS dosya adlarından klip indeksi çıkarır ve data/metadata/index.csv olarak kaydeder.
 
 Dosya adı: MM-VV-EE-II-SS-RR-AA.mp4
     MM modality, VV vocal channel, EE emotion, II intensity,
@@ -12,9 +12,7 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-RAW_DIR = ROOT / "data" / "raw"
-OUT_PATH = ROOT / "results" / "index.csv"
+from config import INDEX_PATH as OUT_PATH, RAW_DIR, ROOT
 
 EMOTIONS_8 = {
     "01": "neutral",

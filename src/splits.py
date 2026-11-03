@@ -1,4 +1,4 @@
-"""Aktör bazlı, cinsiyet dengeli 6 fold tanımlar ve results/splits.json olarak kaydeder.
+"""Aktör bazlı, cinsiyet dengeli 6 fold tanımlar ve data/metadata/splits.json olarak kaydeder.
 
 Her fold 4 aktör (2E + 2K). CV fold k için:
     test  = fold k
@@ -12,15 +12,10 @@ Sabit bölme (geliştirme sırasında kullanılan) CV fold 0 ile aynıdır.
 
 import json
 import random
-from pathlib import Path
 
 import pandas as pd
 
-from utils import SEED
-
-ROOT = Path(__file__).resolve().parents[1]
-INDEX_PATH = ROOT / "results" / "index.csv"
-SPLITS_PATH = ROOT / "results" / "splits.json"
+from config import INDEX_PATH, ROOT, SEED, SPLITS_PATH
 
 N_FOLDS = 6
 FIXED_FOLD = 0

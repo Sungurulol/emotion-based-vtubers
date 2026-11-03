@@ -6,8 +6,7 @@ import random
 import numpy as np
 import torch
 
-# Projenin tek seed'i. Aktör bölmesi, eğitim ve augmentation hepsi bunu kullanır.
-SEED = 4206
+from config import SEED
 
 
 def set_seed(seed: int = SEED) -> None:

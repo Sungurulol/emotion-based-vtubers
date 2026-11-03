@@ -1,5 +1,12 @@
-data/
-models/
+# Veri: videolar ve yüz kırpmaları repoya girmez (boyut + CC BY-NC-SA lisansı).
+# data/metadata/ (indeks, bölme, video bilgisi) ve data/README.md git'te.
+data/raw/
+data/processed/
+
+# Model dosyaları (checkpoint'ler, indirilen ağırlıklar); klasör .gitkeep ile görünür.
+models/*
+!models/.gitkeep
+
 .venv/
 __pycache__/
 .DS_Store
