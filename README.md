@@ -13,15 +13,21 @@ Course project for *Introduction to Deep Learning*, Atatürk University (2026).
 | Frame-based | ResNet-18, MobileNetV2 (ImageNet-pretrained) |
 | Sequence-based | ResNet-18 / MobileNetV2 + LSTM or Transformer |
 
-## Status
+## Status and plan
 
-| Stage | Status |
-|---|---|
-| Setup, data index, actor-wise split, dataset analysis | ✅ done |
-| Preprocessing (face detection, frame sampling, cropping) | ⏳ in progress |
-| Baseline and ResNet-18, progress report | ⏳ in progress |
-| Sequence models, experiments, ablation, cross-validation | planned |
-| Error analysis, Grad-CAM, webcam → VRM avatar demo | planned |
+| Week | Deep learning | 3D avatar | Status |
+|---|---|---|---|
+| 4 | Setup, data index, actor-wise split, dataset analysis | – | ✅ done |
+| 5 | – | Low-poly full-body model in T-pose | ✅ done |
+| 6 | Preprocessing (face detection, frame sampling, cropping), EDA figures, baseline CNN, ResNet-18, **progress report** | – | ⏳ next |
+| 7 | Progress report submission, MobileNetV2 | Rig (VRM humanoid skeleton) | planned |
+| 8 | Sequence models (CNN + LSTM / Transformer), control model | Textures, seven expressions, VRM export | planned |
+| 9–11 | Experiments (frame count, pretrained vs. scratch, augmentation), ablation, 6-fold cross-validation | – | planned |
+| 11–12 | Error analysis, Grad-CAM, attention maps | Webcam → emotion model → avatar demo | planned |
+| 13–14 | Final report, presentation | Live demo | planned |
+
+The progress report only covers the work up to week 6. All results in it are on the validation actors; the test
+actors stay locked until model development is finished.
 
 ## Repository structure
 
@@ -46,8 +52,23 @@ Course project for *Introduction to Deep Learning*, Atatürk University (2026).
 ├── docs/notlar.md       working notes: problem log and decisions (Turkish)
 ├── notebooks/           exploratory notebooks
 ├── models/              checkpoints (not tracked)
-└── avatar/              3D VTuber model (Blender, VRM)
+└── avatar/
+    ├── README.md        what the files are, plan for rig and expressions
+    ├── vtuber_avatar.blend   low-poly model (Blender 5.2), T-pose
+    └── previews/        front and side renders
 ```
+
+## Demo avatar
+
+<img src="avatar/previews/front.png" alt="Front view of the low-poly avatar in T-pose" width="220" align="right">
+
+The live demo needs a 3D model whose expression can be switched by the classifier. The model is built from scratch
+in Blender and will be exported as **VRM**, the common format of 3D VTuber software. VTube Studio, mentioned in the
+proposal, supports only 2D (Live2D) models, so the avatar will be shown in a small web viewer based on
+[`three-vrm`](https://github.com/pixiv/three-vrm) instead. Each of the seven predicted classes triggers one avatar
+expression. See [avatar/README.md](avatar/README.md).
+
+<br clear="right">
 
 ## Setup
 
