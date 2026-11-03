@@ -3,6 +3,9 @@
 data/raw/
 data/processed/
 
+# 3D modelin referans görselleri internetten alındı, public repoya girmez (yerelde duruyor).
+avatar/reference/
+
 # Model dosyaları (checkpoint'ler, indirilen ağırlıklar); klasör .gitkeep ile görünür.
 models/*
 !models/.gitkeep
