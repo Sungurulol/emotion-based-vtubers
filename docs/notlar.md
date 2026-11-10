@@ -36,6 +36,7 @@ Her satır: tarih, sorun, çözüm.
 | 2026-11-04 | Hafta 8'deki 7 ifade için aday yöntem: shape key yerine yüz doku atlası + VRM *texture transform* bind (kafa 8 köşeli bir küp, shape key için yeterli geometri yok). Karar Hafta 8'de. | Low-poly tarza uygun ve daha basit. |
 | 2026-11-04 | **Takvim değişikliği 2:** Progress Report'a sadece Hafta 6'ya kadar yapılan işler girecek. ResNet-18 Hafta 7'den Hafta 6'ya alındı; raporun bütün bölümleri Hafta 6'da yazılıyor. Hafta 7 = son kontrol + teslim + MobileNetV2 ile Faz 4'e başlangıç. | Ödev paketi (Deliverable 2) raporda *Initial deep learning model* ve *Initial results* bölümlerini zorunlu tutuyor; ResNet-18 Hafta 7'de kalsaydı bu iki bölüm boş kalırdı. Revised methodology bölümüne girecek. |
 | 2026-11-04 | Repo yapısı düzenlendi: veri tanımları (`index.csv`, `splits.json`, `video_meta.csv`) `results/`'tan `data/metadata/`'ya, özet tablo `results/tables/`'a, notlar `docs/notlar.md`'ye taşındı. Bütün yollar ve seed `src/config.py`'de. README, `data/README.md` (veri indirme adımları), MIT LICENSE (sadece kod) ve proposal kopyası (`report/proposal/`) eklendi. | `results/` sadece model çıktıları için kalsın; repo public olduğu için açan biri projeyi ve veriyi nasıl hazırlayacağını görsün (§15). Taşımadan sonra bütün çıktılar birebir aynı üretildi. |
+| 2026-11-11 | **Takvim düzeltmesi:** Hafta numaraları ile tarihler bir hafta kaymıştı (Hafta 5 = 27 Eki–2 Kas). Görevler ve hafta numaraları aynı kaldı, tarihler bir hafta ileri alındı: Hafta 6 ≈3–9 Kas, Progress Report (Hafta 7) ≈10–16 Kas, Final Report (Hafta 13) ≈22–28 Ara, sunum (Hafta 14) ≈29 Ara–4 Oca. README'deki plan tablosuna tarih sütunu eklendi; rapor dosyalarındaki hafta yorumları 4 Kas planına göre düzeltildi. | Hafta 4 işleri 23 Eki'de bitmişti, yani kursun sayımı tahminden bir hafta geride. Rapor ve repo yol haritasıyla aynı takvimi göstersin. |
 | 2026-10-20 | Paket sürümleri `requirements.txt`'de sabitlendi (Python 3.13.13, torch 2.14.1, torchvision 0.29.1 …). | Sonradan "hangi sürümle eğitmiştim" sorusu çıkmasın; README'de de bu dosyaya referans verilecek. |
 
 ## Veri seti gözlemleri (Dataset analysis için)
@@ -57,6 +58,6 @@ Her satır: tarih, sorun, çözüm.
 
 ## Preprocessing notları (ne ve neden)
 
-Hafta 5'te tam metne dönüşecek.
+Hafta 6'da tam metne dönüşecek.
 
 - (henüz yok)

@@ -15,16 +15,18 @@ Course project for *Introduction to Deep Learning*, Atatürk University (2026).
 
 ## Status and plan
 
-| Week | Deep learning | 3D avatar | Status |
-|---|---|---|---|
-| 4 | Setup, data index, actor-wise split, dataset analysis | – | ✅ done |
-| 5 | – | Low-poly full-body model in T-pose | ✅ done |
-| 6 | Preprocessing (face detection, frame sampling, cropping), EDA figures, baseline CNN, ResNet-18, **progress report** | – | ⏳ next |
-| 7 | Progress report submission, MobileNetV2 | Rig (VRM humanoid skeleton) | planned |
-| 8 | Sequence models (CNN + LSTM / Transformer), control model | Textures, seven expressions, VRM export | planned |
-| 9–11 | Experiments (frame count, pretrained vs. scratch, augmentation), ablation, 6-fold cross-validation | – | planned |
-| 11–12 | Error analysis, Grad-CAM, attention maps | Webcam → emotion model → avatar demo | planned |
-| 13–14 | Final report, presentation | Live demo | planned |
+Week numbers follow the course calendar (week 5 = 27 Oct – 2 Nov 2026); dates are approximate.
+
+| Week | Dates | Deep learning | 3D avatar | Status |
+|---|---|---|---|---|
+| 4 | 20–26 Oct | Setup, data index, actor-wise split, dataset analysis | – | ✅ done |
+| 5 | 27 Oct – 2 Nov | – | Low-poly full-body model in T-pose | ✅ done |
+| 6 | 3–9 Nov | Preprocessing (face detection, frame sampling, cropping), EDA figures, baseline CNN, ResNet-18, **progress report** | – | ⏳ in progress |
+| 7 | 10–16 Nov | Progress report submission, MobileNetV2 | Rig (VRM humanoid skeleton) | planned |
+| 8 | 17–23 Nov | Sequence models (CNN + LSTM / Transformer), control model | Textures, seven expressions, VRM export | planned |
+| 9–11 | 24 Nov – 14 Dec | Experiments (frame count, pretrained vs. scratch, augmentation), ablation, 6-fold cross-validation | – | planned |
+| 11–12 | 8–21 Dec | Error analysis, Grad-CAM, attention maps | Webcam → emotion model → avatar demo | planned |
+| 13–14 | 22 Dec – 4 Jan | Final report, presentation | Live demo | planned |
 
 The progress report only covers the work up to week 6. All results in it are on the validation actors; the test
 actors stay locked until model development is finished.

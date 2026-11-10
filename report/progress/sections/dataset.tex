@@ -1,6 +1,6 @@
 % 1. Dataset analysis
 % Kaynak: docs/notlar.md (Kararlar, Veri seti gözlemleri). Sayılar results/ ve data/metadata/ altındaki dosyalardan.
-% Bütçe: ~1 sayfa (Hafta 5'te eklenecek görsellerle birlikte).
+% Bütçe: ~1 sayfa (Hafta 6'da eklenecek görsellerle birlikte).
 
 \section{Dataset Analysis}\label{sec:dataset}
 
@@ -24,9 +24,9 @@ RAVDESS uses eight emotion labels. In the original labels, neutral has 96 clips,
 \label{fig:classes}
 \end{figure}
 
-% Hafta 5: her duygudan örnek yüz kırpması + bir klibin kare şeridi (tek şekil olarak birleştirilebilir)
-% Hafta 5: klip süresi / kare sayısı histogramı
-\todo{Week 5: sample face for each emotion, frame strip of one clip, clip length histogram.}
+% Hafta 6: her duygudan örnek yüz kırpması + bir klibin kare şeridi (tek şekil olarak birleştirilebilir)
+% Hafta 6: klip süresi / kare sayısı histogramı
+\todo{Week 6: sample face for each emotion, frame strip of one clip, clip length histogram.}
 
 \paragraph{Actor-wise split}
 If the clips were split at random, clips of the same actor would end up in both the training and the test data, and a model could score well by recognising the person instead of the emotion. In the live demo, however, the model will always see a person it has never seen before. For this reason I split the data by actor, so that all clips of an actor are used for only one purpose.
