@@ -10,6 +10,9 @@ avatar/reference/
 models/*
 !models/.gitkeep
 
+# Kişisel çalışma notları (problem günlüğü, kararlar); yerelde duruyor, repoya girmez.
+docs/notlar.md
+
 .venv/
 __pycache__/
 .DS_Store

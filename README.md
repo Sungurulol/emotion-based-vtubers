@@ -33,7 +33,6 @@ Course project for *Introduction to Deep Learning*, Atatürk University (2026).
 ├── report/
 │   ├── proposal/        project proposal (LaTeX + PDF)
 │   └── progress/        progress report (LaTeX)
-├── docs/notlar.md       working notes: problem log and decisions (Turkish)
 ├── notebooks/           exploratory notebooks
 ├── models/              checkpoints (not tracked)
 └── avatar/
