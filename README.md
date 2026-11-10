@@ -13,24 +13,6 @@ Course project for *Introduction to Deep Learning*, Atatürk University (2026).
 | Frame-based | ResNet-18, MobileNetV2 (ImageNet-pretrained) |
 | Sequence-based | ResNet-18 / MobileNetV2 + LSTM or Transformer |
 
-## Status and plan
-
-Week numbers follow the course calendar (week 5 = 27 Oct – 2 Nov 2026); dates are approximate.
-
-| Week | Dates | Deep learning | 3D avatar | Status |
-|---|---|---|---|---|
-| 4 | 20–26 Oct | Setup, data index, actor-wise split, dataset analysis | – | ✅ done |
-| 5 | 27 Oct – 2 Nov | – | Low-poly full-body model in T-pose | ✅ done |
-| 6 | 3–9 Nov | Preprocessing (face detection, frame sampling, cropping), EDA figures, baseline CNN, ResNet-18, **progress report** | – | ⏳ in progress |
-| 7 | 10–16 Nov | Progress report submission, MobileNetV2 | Rig (VRM humanoid skeleton) | planned |
-| 8 | 17–23 Nov | Sequence models (CNN + LSTM / Transformer), control model | Textures, seven expressions, VRM export | planned |
-| 9–11 | 24 Nov – 14 Dec | Experiments (frame count, pretrained vs. scratch, augmentation), ablation, 6-fold cross-validation | – | planned |
-| 11–12 | 8–21 Dec | Error analysis, Grad-CAM, attention maps | Webcam → emotion model → avatar demo | planned |
-| 13–14 | 22 Dec – 4 Jan | Final report, presentation | Live demo | planned |
-
-The progress report only covers the work up to week 6. All results in it are on the validation actors; the test
-actors stay locked until model development is finished.
-
 ## Repository structure
 
 ```
@@ -74,8 +56,9 @@ expression. See [avatar/README.md](avatar/README.md).
 
 ## Setup
 
-Requirements: Python 3.13 and ffmpeg (`ffprobe` is used to read video properties).
-Developed on macOS with an Apple M5 GPU (PyTorch MPS backend); CPU and CUDA also work.
+Requirements: Python 3.13 and ffmpeg (`ffprobe` is used to read video properties; on macOS
+`brew install ffmpeg`). Developed on macOS with an Apple M5 GPU (PyTorch MPS backend); without MPS the code falls
+back to CUDA or the CPU.
 
 ```bash
 python3 -m venv .venv
@@ -85,43 +68,21 @@ pip install -r requirements.txt
 
 ## Data
 
+The project uses the **Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)**, Zenodo record
+[1188976](https://doi.org/10.5281/zenodo.1188976). Only the **video-only speech** clips are used; the audio, the
+song recordings and the audio-visual copies of the same clips are left out.
+
+| | |
+|---|---|
+| Actors | 24 professional actors, 12 male and 12 female |
+| Content | Two fixed sentences ("Kids are talking by the door", "Dogs are sitting by the door"), spoken with different emotions at normal and strong intensity (neutral only at normal) |
+| Clips | 1,440 (60 per actor) |
+| Video | 1280×720, 29.97 fps, 2.9–5.3 s per clip (88–158 frames) |
+| Emotions | 8 in the dataset; calm is merged into neutral because the two are very similar, giving 7 classes |
+| Class sizes | neutral 288, every other class 192 |
+
 The videos are not part of this repository. Download and extract them as described in
 [data/README.md](data/README.md).
-
-## Reproducing the results
-
-Run from the repository root:
-
-```bash
-python src/build_index.py   # data/metadata/index.csv
-python src/splits.py        # data/metadata/splits.json
-python src/eda.py           # data/metadata/video_meta.csv, results/tables/, results/figures/
-```
-
-Every script checks the expected counts (1,440 clips, 60 per actor, 288 neutral and 192 clips for every other
-class, 2 male + 2 female actors per fold) and stops with an error if one of them does not hold.
-
-To build the progress report:
-
-```bash
-cd report/progress && latexmk -pdf progress.tex
-```
-
-## Reproducibility
-
-- **Seed:** 4206, defined once in `src/config.py`. `utils.set_seed()` fixes Python, NumPy and PyTorch.
-- **Versions:** pinned in `requirements.txt`.
-- **Actor-wise split:** six folds of four actors (two male, two female), stored in `data/metadata/splits.json`.
-  During development the first round is used as a fixed split:
-
-  | Set | Actors | Clips |
-  |---|---|---|
-  | Train | the remaining 16 actors | 960 |
-  | Validation | 3, 12, 21, 24 | 240 |
-  | Test | 4, 6, 7, 23 | 240 |
-
-  The test actors are locked until model development is finished: `splits.load_split()` returns the test set
-  only with `allow_test=True`.
 
 ## Dataset and licence
 

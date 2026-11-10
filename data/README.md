@@ -54,8 +54,7 @@ data/
     └── video_meta.csv           resolution, frame rate, frame count and duration of every clip
 ```
 
-The metadata files are created by `src/build_index.py`, `src/splits.py` and `src/eda.py`
-(see the main [README](../README.md)).
+The metadata files are created by `src/build_index.py`, `src/splits.py` and `src/eda.py`.
 
 ## RAVDESS file names
 
